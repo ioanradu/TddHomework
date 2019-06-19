@@ -1,30 +1,45 @@
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class FibonacciTest {
 
-    private Fibonacci fibonacci;
-
-    @Before
-    public void init(){
-        fibonacci = new Fibonacci();
+    @Test
+    public void testFibonacciNumberWithIndex3() throws NegativeNumberException {
+        assertEquals(2, Fibonacci.computeRecursive(3));
     }
 
     @Test
-    public void testTheFirstThreeFibonacciNumbers(){
-        assertEquals(2, fibonacci.computeRecursive(3));
+    public void testFibonacciNumberWithIndex5() throws NegativeNumberException {
+        assertEquals(5, Fibonacci.computeRecursive(5));
     }
 
     @Test
-    public void testTheFirstFiveFibonacciNumbers(){
-        assertEquals(5, fibonacci.computeRecursive(5));
+    public void testFibonacciNumberWithIndex8() throws NegativeNumberException {
+        assertEquals(21, Fibonacci.computeRecursive(8));
     }
 
     @Test
-    public void testTheFirstEightFibonacciNumbers(){
-        assertEquals(21, fibonacci.computeRecursive(8));
+    public void testNonRecursiveFibonacciNumberWithIndex3() throws NegativeNumberException {
+        assertEquals(2, Fibonacci.computeNonRecursive(3));
     }
 
+    @Test
+    public void testNonRecursiveFibonacciNumberWithIndex5() throws NegativeNumberException {
+        assertEquals(5, Fibonacci.computeNonRecursive(5));
+    }
 
+    @Test
+    public void testNonRecursiveFibonacciNumberWithIndex8() throws NegativeNumberException {
+        assertEquals(21, Fibonacci.computeNonRecursive(8));
+    }
+
+    @Test(expected = NegativeNumberException.class)
+    public void testIfTheNumberGivenIsGreaterOrEqualThan0OnRecursiveMethod() throws NegativeNumberException {
+        Fibonacci.computeRecursive(-1);
+    }
+
+    @Test(expected = NegativeNumberException.class)
+    public void testIfTheNumberGivenIsGreaterOrEqualThan0OnNonRecursiveMethod() throws NegativeNumberException {
+        Fibonacci.computeNonRecursive(-2);
+    }
 }

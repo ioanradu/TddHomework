@@ -1,5 +1,3 @@
-
-
 public class CustomStack {
     public static final int SEGMENT = 8; // se prefara a fi declarate inaintea celorlalte tipuri de date
     int[] data;
@@ -11,7 +9,7 @@ public class CustomStack {
     }
 
     public boolean isEmpty() {
-        return data[size] == 0;
+        return size == 0;
     }
 
 

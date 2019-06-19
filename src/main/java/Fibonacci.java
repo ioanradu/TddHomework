@@ -1,18 +1,16 @@
-import java.util.Scanner;
-
 public class Fibonacci {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NegativeNumberException {
 
-        int index = 8;
+        int index = 5;
         System.out.print("Non Recursively Fibonacci Series of " + index + " numbers is: ");
 
         long start = System.currentTimeMillis();
-        computeNonRecursive(index);
-        //double result = computeNonRecursive(index);
+
+        double result = computeNonRecursive(index);
         long end = System.currentTimeMillis();
 
         System.out.println();
-        System.out.println("f(" + index + ") = " + " : time = " + (end - start) + "ms");
+        System.out.println("f(" + index + ") = " + result + " : time = " + (end - start) + "ms");
 
         System.out.println();
         System.out.print("Recursively Fibonacci Series of " + index + " numbers is: ");
@@ -22,7 +20,7 @@ public class Fibonacci {
         }
 
         start = System.currentTimeMillis();
-        double result = computeRecursive(index);
+        result = computeRecursive(index);
         end = System.currentTimeMillis();
 
         System.out.println();
@@ -30,25 +28,32 @@ public class Fibonacci {
 
     }
 
-    public static void computeNonRecursive(int n) {
+    public static int computeNonRecursive(int n) throws NegativeNumberException {
+        if (n < 0) {
+            throw new NegativeNumberException("The negative numbers are not allowed!");
+        }
         int previousNumber = 0;
         int nextNumber = 1;
         int i = 1;
+        int sum = 0;
         while (i <= n) {
-            System.out.print(previousNumber + " ");
-            int sum = previousNumber + nextNumber;
+            sum = previousNumber + nextNumber;
             previousNumber = nextNumber;
             nextNumber = sum;
             i++;
         }
+        return previousNumber;
+
     }
 
-    public static int computeRecursive(int n) {
+    public static int computeRecursive(int n) throws NegativeNumberException {
+        if (n < 0) {
+            throw new NegativeNumberException("The negative numbers are not allowed!");
+        }
         if (n < 2) {
             return n;
         } else {
             return computeRecursive(n - 1) + computeRecursive(n - 2);
         }
     }
-
 }
