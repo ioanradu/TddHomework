@@ -14,8 +14,9 @@ public class CustomStackTest {
     }
 
     @Test
-    public void testWhenStackIsEmptyThenIsEmptyMethodReturnsTrue(){
-        assertEquals(true, data.isEmpty());
+    public void testWhenStackIsNotEmptyThenIsEmptyMethodReturnsFalse(){
+        data.push(0);
+        assertEquals(false, data.isEmpty());
     }
 
     @Test

@@ -1,7 +1,47 @@
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collection;
+
 import static org.junit.Assert.assertEquals;
 
+
+@RunWith(Parameterized.class)
 public class FibonacciTest {
+    @Parameterized.Parameters
+    public static Collection<Integer[]> parameters() {
+        return Arrays.asList(new Integer[][]{
+                {0, 0},
+                {1, 1},
+                {2, 1},
+                {3, 2},
+                {4, 3},
+                {5, 5},
+                {6, 8},
+                {7, 13},
+                {8, 21},
+                {9, 34},
+                {10, 55}
+        });
+    }
+
+    @Parameterized.Parameter(0)
+    public int index;
+    @Parameterized.Parameter(1)
+    public int value;
+
+    @Test
+    public void testFibonacciRecursiveParametrized() throws NegativeNumberException {
+        assertEquals(value, Fibonacci.computeRecursive(index));
+    }
+
+    @Test
+    public void testFibonacciNonRecursiveParametrized() throws NegativeNumberException {
+        assertEquals(value, Fibonacci.computeNonRecursive(index));
+    }
 
     @Test
     public void testFibonacciNumberWithIndex3() throws NegativeNumberException {

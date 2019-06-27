@@ -15,9 +15,9 @@ public class Fibonacci {
         System.out.println();
         System.out.print("Recursively Fibonacci Series of " + index + " numbers is: ");
 
-        for (int i = 0; i < index; i++) {
+        /*for (int i = 0; i < index; i++) {
             System.out.print(computeRecursive(i) + " ");
-        }
+        }*/
 
         start = System.currentTimeMillis();
         result = computeRecursive(index);
@@ -32,17 +32,27 @@ public class Fibonacci {
         if (n < 0) {
             throw new NegativeNumberException("The negative numbers are not allowed!");
         }
+
+        int sum = 0;
+
+        if(n == 0){
+            return 0;
+        }
+
+        if(n == 1){
+            return 1;
+        }
+
         int previousNumber = 0;
         int nextNumber = 1;
         int i = 1;
-        int sum = 0;
-        while (i <= n) {
+        while (i < n) {
             sum = previousNumber + nextNumber;
             previousNumber = nextNumber;
             nextNumber = sum;
             i++;
         }
-        return previousNumber;
+        return sum;
 
     }
 

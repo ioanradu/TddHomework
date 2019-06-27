@@ -1,5 +1,5 @@
 public class CustomStack {
-    public static final int SEGMENT = 8; // se prefara a fi declarate inaintea celorlalte tipuri de date
+    public static final int SEGMENT = 8; // se prefera a fi declarate inaintea celorlalte tipuri de date
     int[] data;
     int size;
 
